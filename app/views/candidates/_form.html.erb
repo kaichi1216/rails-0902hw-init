@@ -1,0 +1,10 @@
+<%= simple_form_for(candidate) do |form| %>
+  <div class="box">
+    <%= form.input :name, label: '姓名' %>
+    <%# <%= form.input :degree, label: '學歷' %> 
+    <%= form.input :party, label: '政黨' %>
+    <%= form.input :age, label: '年紀' %>
+    <%= form.input :politics, label: '政見' %>
+    <%= form.submit class: 'btn btn-success btn-lg' %>
+  </div>
+<% end %>

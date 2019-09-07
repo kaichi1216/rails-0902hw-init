@@ -1,0 +1,36 @@
+<h1>候選人列表<h1>
+
+
+<%= paginate @candidates %>
+
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th>投票</th>
+      <th>得票數</th>
+      <th>候選人</th>
+      <th>處理</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @candidates.each do |candidate| %>
+    <tr>
+      <td>
+        <%= link_to "投票！", vote_candidate_path(candidate), class: 'btn btn-sm btn-warning', method: 'post', data: { confirm: '確認投票?!'} %>
+      </td>
+      <td>
+        <%= candidate.vote_logs.size %>
+      </td>
+      <td>
+          <%= link_to candidate.name, candidates_path(candidate) %>
+      </td>
+      <td>
+        <%= link_to "編輯", edit_candidate_path(candidate), class: 'btn btn-sm btn-success' %>
+        <%= link_to "刪除", candidate_path(candidate), class: 'btn btn-sm btn-danger', method: 'delete', data: { confirm: '確定嗎?!'} %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '新增候選人', new_candidate_path, class: 'btn btn-primary btn-lg' %>
